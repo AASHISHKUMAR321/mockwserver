@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import config from 'config';
+import config from "config";
 
 import jsonServer from "json-server";
 import path from "path";
@@ -18,7 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const uid = new ShortUniqueId({ length: 10 });
 
-const file = path.join(__dirname, config.get('db'));
+const file = path.join(__dirname, config.get("db"));
 const adapter = new JSONFileSync(file);
 const db = new LowSync(adapter);
 // db.read();
@@ -26,7 +26,7 @@ const db = new LowSync(adapter);
 // db.write();
 
 const server = jsonServer.create();
-const router = jsonServer.router(join(__dirname, config.get('db')));
+const router = jsonServer.router(join(__dirname, config.get("db")));
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
@@ -46,6 +46,7 @@ const protectedRoutes = [
   { route: "/areas", methods: ["POST", "PUT", "DELETE", "PATCH"] },
   { route: "/recipeTags", methods: ["POST", "PUT", "DELETE", "PATCH"] },
   { route: "/orders", methods: ["GET", "POST", "PUT", "DELETE", "PATCH"] },
+  { route: "/products", methods: ["POST", "PUT", "DELETE", "PATCH"] },
 ];
 
 // Authorization logic
@@ -184,8 +185,10 @@ function generateAccessToken(user) {
 
 server.use(router);
 
-
-const PORT = process.env.NODE_ENV == 'development' ? `http://localhost:${config.get('port')}/` : `PORT: ${config.get('port')}`
+const PORT =
+  process.env.NODE_ENV == "development"
+    ? `http://localhost:${config.get("port")}/`
+    : `PORT: ${config.get("port")}`;
 
 server.listen(9999, () => {
   console.log(

@@ -142,3 +142,18 @@ GET http://localhost:9999/posts?_expand=user
 
 ### Recipe Categories
 GET http://localhost:9999/recipeCategories
+
+###
+
+POST http://localhost:9999/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
+Content-Type: application/json
+
+{
+  "name": "Cute new cat",
+  "cost": 40.64,
+  "likes": 90,
+  "image": "https://loremflickr.com/640/480/cats",
+  "description": "Laudantium earum dignissimos saepe aliquid modi. Nemo perspiciatis consectetur totam aliquam officiis dolorum numquam. Doloremque nisi nam reprehenderit voluptas maxime. Hic rem vel rem id ipsum.",
+  "breed": "Siamese"
+}
